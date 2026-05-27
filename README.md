@@ -1,214 +1,75 @@
-# 🎵 Music Matrix - AI-Powered Music Recommender
+# Shubz-Taylor Swift Recommendation Engine
 
-A beautiful, sci-fi themed music recommendation engine that uses Spotify's API and machine learning to recommend songs across artists. Built with Python FastAPI backend and Next.js frontend.
+**Live:** [shubz.shinyapps.io/shubz-taylor-rec-engine-folder](https://shubz.shinyapps.io/shubz-taylor-rec-engine-folder/)
 
-## ✨ Features
+A Taylor Swift song recommender built in R. Select songs from her discography that you already like, get three new recommendations, and explore visualizations breaking down why those songs were chosen — across danceability, energy, acousticness, valence, popularity, and more.
 
-- 🎨 **Sci-fi UI** with animated loading screen featuring snake logo
-- 🎵 **Multi-artist support** - Get recommendations from any artist
-- 🔄 **Cross-artist recommendations** - Like Drake? Get Taylor Swift recommendations!
-- 📊 **Interactive visualizations** - See audio features and similarity scores
-- ⚡ **Real-time search** - Search Spotify's entire catalog
-- 🎯 **ML-powered** - Uses scikit-learn for similarity matching
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.9+
-- Node.js 18+
-- Spotify Developer Account (free)
-
-### 1. Get Spotify API Credentials
-
-1. Go to [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
-2. Create a new app
-3. Copy your **Client ID** and **Client Secret**
-
-### 2. Backend Setup
-
-```bash
-# Navigate to backend
-cd backend
-
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# On macOS/Linux:
-source venv/bin/activate
-# On Windows:
-venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Create .env file
-cp .env.example .env
-
-# Edit .env and add your Spotify credentials:
-# SPOTIFY_CLIENT_ID=your_client_id
-# SPOTIFY_CLIENT_SECRET=your_client_secret
-
-# Run the backend
-uvicorn app.main:app --reload
-```
-
-Backend will run on `http://localhost:8000`
-
-### 3. Frontend Setup
-
-```bash
-# Navigate to frontend (in a new terminal)
-cd frontend
-
-# Install dependencies
-npm install
-
-# Create .env.local file
-echo "NEXT_PUBLIC_API_URL=http://localhost:8000" > .env.local
-
-# Run the frontend
-npm run dev
-```
-
-Frontend will run on `http://localhost:3000`
-
-## 📁 Project Structure
-
-```
-music-recommender/
-├── backend/
-│   ├── app/
-│   │   ├── main.py          # FastAPI app
-│   │   ├── recommender.py   # ML recommendation engine
-│   │   ├── spotify_client.py # Spotify API client
-│   │   └── models.py        # Data models
-│   ├── requirements.txt
-│   └── .env                 # Environment variables
-│
-├── frontend/
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── page.tsx     # Main page
-│   │   │   └── layout.tsx  # Layout
-│   │   └── components/
-│   │       ├── LoadingScreen.tsx    # Animated loading
-│   │       ├── SongSelector.tsx     # Song search & selection
-│   │       ├── Recommendations.tsx  # Display recommendations
-│   │       ├── Visualizations.tsx   # Charts & graphs
-│   │       └── ArtistSelector.tsx    # Target artist input
-│   ├── package.json
-│   └── next.config.js
-│
-└── README.md
-```
-
-## 🎮 How to Use
-
-1. **Search for songs** - Type in the search box and select songs you like
-2. **Optional: Set target artist** - Want recommendations from a specific artist? Enter their name
-3. **Get recommendations** - Click "GENERATE RECOMMENDATIONS"
-4. **Explore** - View recommendations with similarity scores and audio features
-
-## 🚀 Deployment
-
-### Backend (Render)
-
-1. Push code to GitHub
-2. Go to [Render](https://render.com)
-3. Create new Web Service
-4. Connect your GitHub repo
-5. Set build command: `pip install -r requirements.txt`
-6. Set start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-7. Add environment variables (SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET)
-
-### Frontend (Vercel)
-
-1. Push code to GitHub
-2. Go to [Vercel](https://vercel.com)
-3. Import your GitHub repo
-4. Set root directory to `frontend`
-5. Add environment variable: `NEXT_PUBLIC_API_URL` = your Render backend URL
-6. Deploy!
-
-## 🛠️ Tech Stack
-
-### Backend
-- **FastAPI** - Modern Python web framework
-- **Spotipy** - Spotify Web API wrapper
-- **scikit-learn** - Machine learning for recommendations
-- **pandas/numpy** - Data processing
-
-### Frontend
-- **Next.js 14** - React framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **Framer Motion** - Animations
-- **Recharts** - Data visualizations
-- **Lucide React** - Icons
-
-## 🎨 Features in Detail
-
-### Loading Screen
-- Animated snake logo (S-shaped)
-- Particle effects
-- Progress bar
-- Sci-fi aesthetic
-
-### Recommendations
-- Cosine similarity matching
-- Audio feature analysis
-- Cross-artist support
-- Real-time Spotify search
-
-### Visualizations
-- Radar charts for audio features
-- Bar charts for similarity scores
-- Interactive tooltips
-
-## 📝 Environment Variables
-
-### Backend (.env)
-```
-SPOTIFY_CLIENT_ID=your_spotify_client_id
-SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
-SUPABASE_URL=optional_supabase_url
-SUPABASE_KEY=optional_supabase_key
-```
-
-### Frontend (.env.local)
-```
-NEXT_PUBLIC_API_URL=http://localhost:8000
-```
-
-## 🐛 Troubleshooting
-
-### Backend won't start
-- Make sure virtual environment is activated
-- Check that .env file exists with Spotify credentials
-- Verify Python version is 3.9+
-
-### Frontend won't start
-- Run `npm install` again
-- Check Node.js version (18+)
-- Clear `.next` folder and try again
-
-### API errors
-- Verify Spotify credentials are correct
-- Check backend is running on port 8000
-- Check CORS settings in backend
-
-## 📄 License
-
-MIT License - Feel free to use this project!
-
-## 🙏 Credits
-
-- Spotify Web API for music data
-- All the amazing open-source libraries used
+This is the original v1, built in late 2022. A Python/FastAPI + Next.js rebuild (v2) is also in this repo — see `backend/` and `frontend/`.
 
 ---
 
-**Made with ❤️ and lots of ☕**
+## How It Works
 
+The recommender builds 10 separate User-Based Collaborative Filtering (UBCF) models using `recommenderlab` — one per audio feature — then merges all 10 into a single `HybridRecommender`. At query time, the user's selected songs are encoded as a binary vector and passed to the hybrid model to produce 3 recommendations.
+
+| Feature | Notes |
+|---------|-------|
+| Popularity | Spotify popularity score |
+| Album | Album membership |
+| Tempo | BPM |
+| Loudness | Discretised to whole numbers to reduce sparsity |
+| Danceability | |
+| Acousticness | |
+| Energy | |
+| Liveness | |
+| Speechiness | |
+| Valence | Musical positiveness (0 = sad, 1 = happy) |
+
+Each feature is converted into a `binaryRatingMatrix` and trained with UBCF (`nn=3`, 80/20 train split via `evaluationScheme`).
+
+---
+
+## UI
+
+Three-tab R Shiny interface (superhero theme):
+
+**Long Story Short**
+Bar charts for danceability, energy, acousticness, valence, and popularity of your three recommended songs.
+
+**Closure**
+Correlation matrices comparing your recommended songs vs. Taylor's full discography, a waffle chart of album composition, and a histogram explorer across all 11 audio features.
+
+**Dear Reader**
+Album-level boxplots for track length and tempo across her full discography.
+
+---
+
+## Running Locally
+
+```r
+install.packages(c(
+  "shiny", "dplyr", "ggplot2", "recommenderlab", "purrr",
+  "mltools", "data.table", "tidyr", "tidytext", "shinyWidgets",
+  "waffle", "ggcorrplot", "shinythemes"
+))
+
+shiny::runApp("app.r")
+```
+
+---
+
+## Data
+
+`ts.csv` — Taylor Swift's full discography as of late 2022. Midnights excluded (Spotify had not released that data at the time). Bonus tracks not included.
+
+---
+
+## Stack
+
+R · R Shiny · recommenderlab · ggplot2 · tidyverse · data.table · ggcorrplot · waffle
+
+---
+
+## License
+
+[MIT](LICENSE)
