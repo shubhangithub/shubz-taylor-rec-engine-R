@@ -4,7 +4,7 @@
 
 A Taylor Swift song recommender built in R. Select songs from her discography that you already like, get three new recommendations, and explore visualizations breaking down why those songs were chosen — across danceability, energy, acousticness, valence, popularity, and more.
 
-This is the original v1, built in late 2022. A Python/FastAPI + Next.js rebuild (v2) is also in this repo — see `backend/` and `frontend/`.
+Built in late 2022.
 
 ---
 
